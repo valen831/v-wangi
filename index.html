@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-WANGI - Aroma yang Tak Terlupakan</title>
+    <meta name="description" content="Toko parfum premium e-commerce v-wangi dengan aroma berkualitas, alami, dan racikan lokal terbaik.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo" id="nav-logo">V-WANGI</a>
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active" data-target="home">Home</a>
+                <a href="#about" class="nav-link" data-target="about">About</a>
+                <a href="#collections" class="nav-link" data-target="collections">Collections</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="nav-btn" id="auth-btn" title="Masuk / Daftar">
+                    <i class="fa-regular fa-user"></i>
+                    <span class="btn-text">Masuk</span>
+                </button>
+                <button class="nav-btn cart-toggle-btn" id="cart-btn" title="Keranjang">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cart-badge-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Slide-Out Shopping Cart Panel -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <h3>Keranjang Belanja</h3>
+            <button class="close-cart-btn" id="close-cart-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <!-- Dynamic Cart Items go here -->
+            <div class="empty-cart-message">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <p>Keranjang belanja Anda kosong.</p>
+                <button class="btn btn-primary btn-shop-now">Lihat Koleksi</button>
+            </div>
+        </div>
+        <div class="cart-footer" id="cart-footer">
+            <div class="cart-total-row">
+                <span>Subtotal:</span>
+                <span class="total-price" id="cart-subtotal">Rp 0</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="btn-go-to-checkout">Lanjutkan ke Checkout</button>
+        </div>
+    </div>
+
+    <!-- Main View Content (SPA Page Views) -->
+    <main class="main-content">
+
+        <!-- 1. Home / Landing Page View -->
+        <section id="home-view" class="view-section active">
+            <!-- Hero Banner -->
+            <div class="hero-banner">
+                <div class="hero-content">
+                    <span class="hero-subtitle">Premium Eau De Parfum</span>
+                    <h1 class="hero-title">Aroma yang<br><span class="highlight-gold">Tak Terlupakan</span></h1>
+                    <p class="hero-description">Temukan karakter sejatimu lewat kemewahan aroma pilihan dari racikan minyak esensial alami murni berkualitas tinggi.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-shop-now">Beli Sekarang</button>
+                        <button class="btn btn-secondary" id="btn-explore-story">Lihat Cerita Kami</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="glow-sphere"></div>
+                    <img src="assets/rose_elixir.png" alt="V-Wangi Signature Bottle" class="hero-img floating-animation">
+                </div>
+            </div>
+
+            <!-- Best Sellers Section -->
+            <div class="best-sellers-section">
+                <div class="section-header">
+                    <span class="section-tag">Koleksi Terlaris</span>
+                    <h2 class="section-title">Best Sellers</h2>
+                    <p class="section-desc">Pilihan terfavorit pelanggan v-wangi yang memikat setiap indera sejak hirupan pertama.</p>
+                </div>
+                <div class="product-grid" id="best-sellers-grid">
+                    <!-- Dynamic Best Sellers Card go here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About / Story View -->
+        <section id="about-view" class="view-section">
+            <div class="about-container">
+                <div class="section-header text-center">
+                    <span class="section-tag">Ingredients & Story</span>
+                    <h2 class="section-title">Kisah & Kualitas Kami</h2>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="about-icon"><i class="fa-solid fa-leaf"></i></div>
+                        <h3>Bahan Alami Murni</h3>
+                        <p>Menggunakan 100% ekstrak minyak esensial alami yang diperoleh secara etis tanpa bahan kimia sintetis berbahaya.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <h3>Aroma Khas</h3>
+                        <p>Setiap varian dirancang oleh master perfumer profesional untuk menciptakan transisi aroma notes yang harmonis dan unik.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="about-icon"><i class="fa-solid fa-award"></i></div>
+                        <h3>Lokal & Berkualitas</h3>
+                        <p>Diproduksi secara lokal dengan standar internasional, menjaga keaslian budaya wewangian premium Indonesia.</p>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="stats-section">
+                    <div class="stat-item">
+                        <span class="stat-number">10k+</span>
+                        <span class="stat-label">Pelanggan Puas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">40+</span>
+                        <span class="stat-label">Varian Aroma</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Jaminan Asli</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.9</span>
+                        <span class="stat-label">Rating Rata-rata</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Collections & Product Grid View -->
+        <section id="collections-view" class="view-section">
+            <div class="collections-container">
+                <div class="section-header">
+                    <span class="section-tag">Semua Varian</span>
+                    <h2 class="section-title">Collections</h2>
+                </div>
+                <div class="product-grid" id="all-collections-grid">
+                    <!-- Dynamic Product Grid loaded from Javascript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Product Detail & Notes View -->
+        <section id="detail-view" class="view-section">
+            <div class="detail-container" id="product-detail-container">
+                <!-- Loaded dynamically by app.js -->
+            </div>
+        </section>
+
+        <!-- 5. User Authentication View (Login/Register) -->
+        <section id="auth-view" class="view-section">
+            <div class="auth-card-wrapper">
+                <!-- Left Decorative Visual -->
+                <div class="auth-visual">
+                    <div class="auth-visual-overlay"></div>
+                    <div class="auth-visual-content">
+                        <h3>V-WANGI</h3>
+                        <p>Dapatkan pengalaman belanja wewangian premium yang lebih personal dengan membuat akun Anda hari ini.</p>
+                    </div>
+                </div>
+                <!-- Right Auth Forms -->
+                <div class="auth-form-side">
+                    <!-- Login Form -->
+                    <div class="auth-form-container active" id="login-form-container">
+                        <h2>Selamat Datang Kembali</h2>
+                        <p class="auth-subtitle">Silakan masuk dengan kredensial akun Anda</p>
+                        <form id="login-form" class="auth-form">
+                            <div class="form-group">
+                                <label for="login-email">Email</label>
+                                <input type="email" id="login-email" required placeholder="nama@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="login-password">Kata Sandi</label>
+                                <input type="password" id="login-password" required placeholder="••••••••">
+                            </div>
+                            <div class="form-options">
+                                <label class="checkbox-container">
+                                    <input type="checkbox"> Ingat saya
+                                </label>
+                                <a href="#" class="forgot-link">Lupa sandi?</a>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+                        </form>
+                        <div class="divider"><span>atau masuk dengan</span></div>
+                        <div class="social-login-grid">
+                            <button class="social-login-btn"><i class="fa-brands fa-google"></i> Google</button>
+                            <button class="social-login-btn"><i class="fa-brands fa-facebook-f"></i> Facebook</button>
+                        </div>
+                        <p class="auth-footer-text">Belum punya akun? <a href="#" id="link-to-register">Daftar Sekarang</a></p>
+                    </div>
+
+                    <!-- Register Form -->
+                    <div class="auth-form-container" id="register-form-container">
+                        <h2>Daftar Akun Baru</h2>
+                        <p class="auth-subtitle">Gabung dengan komunitas V-WANGI</p>
+                        <form id="register-form" class="auth-form">
+                            <div class="form-group">
+                                <label for="register-name">Nama Lengkap</label>
+                                <input type="text" id="register-name" required placeholder="Valen">
+                            </div>
+                            <div class="form-group">
+                                <label for="register-email">Email</label>
+                                <input type="email" id="register-email" required placeholder="nama@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="register-password">Kata Sandi</label>
+                                <input type="password" id="register-password" required placeholder="Minimal 6 karakter">
+                            </div>
+                            <label class="checkbox-container terms-checkbox">
+                                <input type="checkbox" required> Saya menyetujui Syarat & Ketentuan serta Kebijakan Privasi.
+                            </label>
+                            <button type="submit" class="btn btn-primary btn-block">Daftar</button>
+                        </form>
+                        <div class="divider"><span>atau daftar dengan</span></div>
+                        <div class="social-login-grid">
+                            <button class="social-login-btn"><i class="fa-brands fa-google"></i> Google</button>
+                            <button class="social-login-btn"><i class="fa-brands fa-facebook-f"></i> Facebook</button>
+                        </div>
+                        <p class="auth-footer-text">Sudah punya akun? <a href="#" id="link-to-login">Masuk</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Checkout View -->
+        <section id="checkout-view" class="view-section">
+            <div class="checkout-grid">
+                <!-- Shipping and Checkout Form -->
+                <div class="checkout-form-column">
+                    <h2>Alamat Pengiriman</h2>
+                    <form id="checkout-shipping-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="shipping-first-name">Nama Depan</label>
+                                <input type="text" id="shipping-first-name" required placeholder="Valen">
+                            </div>
+                            <div class="form-group">
+                                <label for="shipping-last-name">Nama Belakang</label>
+                                <input type="text" id="shipping-last-name" required placeholder="Pratama">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping-phone">Nomor WhatsApp / Telepon</label>
+                            <input type="tel" id="shipping-phone" required placeholder="08974467878">
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping-address">Alamat Lengkap</label>
+                            <textarea id="shipping-address" required placeholder="Nama jalan, nomor rumah, RT/RW, kecamatan, kota, kode pos" rows="3"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="shipping-city">Kota/Kabupaten</label>
+                                <input type="text" id="shipping-city" required placeholder="Jakarta Selatan">
+                            </div>
+                            <div class="form-group">
+                                <label for="shipping-zip">Kode Pos</label>
+                                <input type="text" id="shipping-zip" required placeholder="12345">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="shipping-courier">Metode Pengiriman</label>
+                            <select id="shipping-courier" required>
+                                <option value="15000">J&T Reguler (Rp 15.000) - 2-3 Hari Kerja</option>
+                                <option value="20000">JNE Yes (Rp 20.000) - 1 Hari Kerja</option>
+                                <option value="10000">SiCepat Halu (Rp 10.000) - 3-5 Hari Kerja</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-proceed-to-payment">Lanjutkan ke Pembayaran</button>
+                    </form>
+                </div>
+
+                <!-- Order Summary Column -->
+                <div class="checkout-summary-column">
+                    <div class="summary-card">
+                        <h3>Ringkasan Pesanan</h3>
+                        <div class="summary-items-list" id="checkout-items-list">
+                            <!-- Items loaded dynamically -->
+                        </div>
+                        <hr class="summary-divider">
+                        <div class="summary-totals">
+                            <div class="total-row">
+                                <span>Subtotal</span>
+                                <span id="checkout-subtotal">Rp 0</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Biaya Pengiriman</span>
+                                <span id="checkout-shipping">Rp 15.000</span>
+                            </div>
+                            <hr class="total-divider">
+                            <div class="total-row grand-total">
+                                <span>Total Keseluruhan</span>
+                                <span id="checkout-grand-total">Rp 0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Payment Gateway View -->
+        <section id="payment-view" class="view-section">
+            <div class="payment-grid">
+                <!-- Payment Form Column -->
+                <div class="payment-form-column">
+                    <h2>Metode Pembayaran</h2>
+                    <p class="payment-desc">Semua transaksi dienkripsi dan dijamin 100% aman.</p>
+                    
+                    <div class="payment-methods-tabs">
+                        <button class="payment-tab active" data-method="credit-card">
+                            <i class="fa-solid fa-credit-card"></i> Kartu Kredit/Debit
+                        </button>
+                        <button class="payment-tab" data-method="bank-transfer">
+                            <i class="fa-solid fa-building-columns"></i> Transfer Bank
+                        </button>
+                        <button class="payment-tab" data-method="qris">
+                            <i class="fa-solid fa-qrcode"></i> Dompet Digital / QRIS
+                        </button>
+                    </div>
+
+                    <div class="payment-method-forms">
+                        <!-- Credit Card Form -->
+                        <div class="payment-method-content active" id="payment-credit-card">
+                            <!-- Premium Credit Card Visual -->
+                            <div class="credit-card-preview-container">
+                                <div class="credit-card-preview">
+                                    <div class="card-chip"></div>
+                                    <div class="card-logo"><i class="fa-brands fa-cc-visa"></i></div>
+                                    <div class="card-number-label" id="card-preview-number">•••• •••• •••• ••••</div>
+                                    <div class="card-holder-info">
+                                        <div class="card-label">PEMEGANG KARTU</div>
+                                        <div class="card-name" id="card-preview-name">VALEN PRATAMA</div>
+                                    </div>
+                                    <div class="card-expiry-info">
+                                        <div class="card-label">BERLAKU S/D</div>
+                                        <div class="card-expiry" id="card-preview-expiry">MM/YY</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <form id="credit-card-form">
+                                <div class="form-group">
+                                    <label for="cc-number">Nomor Kartu</label>
+                                    <input type="text" id="cc-number" required placeholder="4111 2222 3333 4444" maxlength="19">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc-name">Nama di Kartu</label>
+                                    <input type="text" id="cc-name" required placeholder="Valen Pratama">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="cc-expiry">Masa Berlaku</label>
+                                        <input type="text" id="cc-expiry" required placeholder="MM/YY" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cc-cvv">CVV</label>
+                                        <input type="password" id="cc-cvv" required placeholder="123" maxlength="3">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block btn-lg" id="btn-pay-now">Bayar Sekarang</button>
+                            </form>
+                        </div>
+
+                        <!-- Bank Transfer Info -->
+                        <div class="payment-method-content" id="payment-bank-transfer">
+                            <div class="bank-info-box">
+                                <h3>Virtual Account (VA) BCA</h3>
+                                <p class="bank-va-number">88012 0897 4467 878</p>
+                                <p class="bank-va-owner">Atas Nama: <strong>V-WANGI CO</strong></p>
+                                <div class="bank-steps">
+                                    <h4>Petunjuk Pembayaran:</h4>
+                                    <ol>
+                                        <li>Buka aplikasi m-BCA atau masuk ke internet banking BCA.</li>
+                                        <li>Pilih menu <strong>Transfer > BCA Virtual Account</strong>.</li>
+                                        <li>Masukkan nomor Virtual Account di atas.</li>
+                                        <li>Konfirmasi nominal tagihan yang muncul dan selesaikan pembayaran.</li>
+                                    </ol>
+                                </div>
+                                <button class="btn btn-primary btn-block btn-lg" id="btn-pay-bank">Konfirmasi Pembayaran</button>
+                            </div>
+                        </div>
+
+                        <!-- QRIS Code Mockup -->
+                        <div class="payment-method-content" id="payment-qris">
+                            <div class="qris-box">
+                                <h3>Bayar Instan dengan QRIS</h3>
+                                <p class="qris-desc">Pindai kode QR menggunakan GoPay, OVO, Dana, LinkAja, atau Mobile Banking.</p>
+                                <div class="qris-qrcode-container">
+                                    <!-- Dynamic QRIS code container -->
+                                    <div class="qris-qr-code">
+                                        <i class="fa-solid fa-qrcode"></i>
+                                        <div class="qr-scanner-line"></div>
+                                    </div>
+                                    <span class="qris-badge">QRIS Nasional</span>
+                                </div>
+                                <button class="btn btn-primary btn-block btn-lg" id="btn-pay-qris">Simulasi Pindai Berhasil</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Small Info Summary -->
+                <div class="payment-summary-column">
+                    <div class="summary-card">
+                        <h3>Pesanan Anda</h3>
+                        <div class="summary-totals">
+                            <div class="total-row">
+                                <span>Subtotal</span>
+                                <span id="payment-subtotal">Rp 0</span>
+                            </div>
+                            <div class="total-row">
+                                <span>Biaya Pengiriman</span>
+                                <span id="payment-shipping">Rp 15.000</span>
+                            </div>
+                            <hr class="total-divider">
+                            <div class="total-row grand-total">
+                                <span>Total Tagihan</span>
+                                <span id="payment-grand-total">Rp 0</span>
+                            </div>
+                        </div>
+                        <div class="secure-checkout-badge">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Enkripsi SSL Secure 256-bit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Payment Success View -->
+        <section id="success-view" class="view-section">
+            <div class="success-container">
+                <div class="success-icon"><i class="fa-regular fa-circle-check"></i></div>
+                <h2>Terima Kasih Atas Pesanan Anda!</h2>
+                <p class="success-subtitle">Pembayaran Anda telah sukses diverifikasi. Kami sedang menyiapkan parfum terbaik untuk dikirimkan kepada Anda.</p>
+                
+                <div class="receipt-card">
+                    <h3>Detail Transaksi</h3>
+                    <div class="receipt-row">
+                        <span>Nomor Pesanan:</span>
+                        <strong id="receipt-order-id">#VW-987219</strong>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Nama Penerima:</span>
+                        <span id="receipt-name">Valen Pratama</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Alamat Pengiriman:</span>
+                        <span id="receipt-address">Jakarta Selatan</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Total Pembayaran:</span>
+                        <strong class="highlight-gold" id="receipt-total">Rp 325.000</strong>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Status Pengiriman:</span>
+                        <span class="delivery-status-badge"><i class="fa-solid fa-truck-ramp-box"></i> Sedang Diproses</span>
+                    </div>
+                </div>
+
+                <div class="success-actions">
+                    <button class="btn btn-primary" id="btn-back-to-home">Kembali ke Beranda</button>
+                    <button class="btn btn-secondary" id="btn-print-receipt"><i class="fa-solid fa-print"></i> Cetak Tanda Terima</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer with Direct Social Media Links -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Brand Column -->
+            <div class="footer-col brand-col">
+                <h3 class="footer-logo">V-WANGI</h3>
+                <p>Meningkatkan rasa percaya diri Anda melalui kemewahan aroma parfum pilihan terbaik.</p>
+                <p class="copyright">&copy; 2026 V-WANGI. Semua hak cipta dilindungi.</p>
+            </div>
+            
+            <!-- Links Column -->
+            <div class="footer-col">
+                <h4>Navigasi</h4>
+                <ul class="footer-links">
+                    <li><a href="#home" class="footer-link">Home</a></li>
+                    <li><a href="#about" class="footer-link">About</a></li>
+                    <li><a href="#collections" class="footer-link">Collections</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Direct Social Media Links Column (Crucial Requirement) -->
+            <div class="footer-col contact-col">
+                <h4>Hubungi Kami</h4>
+                <p class="contact-desc">Ada pertanyaan atau ingin konsultasi aroma? Hubungi profil resmi kami langsung:</p>
+                <div class="social-links-block">
+                    <!-- TikTok Link -->
+                    <a href="https://www.tiktok.com/@valennnn023" target="_blank" rel="noopener noreferrer" class="social-link-item tiktok-link" title="TikTok @valennnn023">
+                        <i class="fa-brands fa-tiktok"></i>
+                        <span class="social-label">TikTok <span class="social-username">@valennnn023</span></span>
+                    </a>
+                    
+                    <!-- WhatsApp Link -->
+                    <a href="https://wa.me/628974467878" target="_blank" rel="noopener noreferrer" class="social-link-item whatsapp-link" title="WhatsApp 08974467878">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span class="social-label">WhatsApp <span class="social-username">08974467878</span></span>
+                    </a>
+                    
+                    <!-- Instagram Link -->
+                    <a href="https://www.instagram.com/saya_gavut" target="_blank" rel="noopener noreferrer" class="social-link-item instagram-link" title="Instagram @saya_gavut">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span class="social-label">Instagram <span class="social-username">@saya_gavut</span></span>
+                    </a>
+                    
+                    <!-- Telegram Link -->
+                    <a href="https://t.me/valenn_29" target="_blank" rel="noopener noreferrer" class="social-link-item telegram-link" title="Telegram @valenn_29">
+                        <i class="fa-brands fa-telegram"></i>
+                        <span class="social-label">Telegram <span class="social-username">@valenn_29</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Script File -->
+    <script src="app.js"></script>
+</body>
+</html>
