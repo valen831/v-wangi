@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-WANGI - Daftar Akun</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .static-page {
+            padding-top: calc(var(--navbar-height) + 40px);
+            padding-bottom: 60px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .strength-bar-wrapper { margin-top: 6px; display: flex; gap: 4px; }
+        .strength-bar-segment { height: 4px; flex: 1; border-radius: 2px; background: rgba(255,255,255,0.1); transition: background 0.3s; }
+        .strength-bar-segment.active-weak   { background: #ef4444; }
+        .strength-bar-segment.active-medium { background: #f59e0b; }
+        .strength-bar-segment.active-strong { background: #22c55e; }
+        .strength-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+        .terms-check { display: flex; align-items: flex-start; gap: 10px; margin-top: 6px; font-size: 0.875rem; color: var(--text-secondary); }
+        .terms-check input { margin-top: 3px; accent-color: var(--gold); }
+        .terms-check a { color: var(--gold); text-decoration: none; }
+        .terms-check a:hover { text-decoration: underline; }
+        .register-visual-bg {
+            background: linear-gradient(145deg, #1a1008 0%, #0f0f0e 60%),
+                        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">V-WANGI</a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="page-about.html" class="nav-link">About</a>
+                <a href="page-collections.html" class="nav-link">Collections</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="nav-btn" onclick="window.location.href='page-login.html'">
+                    <i class="fa-regular fa-user"></i>
+                    <span class="btn-text">Masuk</span>
+                </button>
+                <button class="nav-btn cart-toggle-btn">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="static-page">
+        <div class="auth-card-wrapper">
+            <!-- Visual Side -->
+            <div class="auth-visual register-visual-bg">
+                <div class="auth-visual-overlay"></div>
+                <div class="auth-visual-content">
+                    <h3>Bergabung dengan V-WANGI</h3>
+                    <p>Buat akun gratis dan nikmati keistimewaan pelanggan: akses eksklusif, promo khusus, dan histori pesanan.</p>
+                    <ul class="register-benefit-list">
+                        <li><i class="fa-solid fa-check-circle"></i> Promo & diskon eksklusif member</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Histori & tracking pesanan</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Simpan alamat pengiriman</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Notifikasi produk terbaru</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Form Side -->
+            <div class="auth-form-side">
+                <div class="auth-form-container active">
+                    <h2>Buat Akun Baru</h2>
+                    <p class="auth-subtitle">Daftar gratis dan mulai berbelanja wewangian premium</p>
+
+                    <form class="auth-form" id="registerForm" onsubmit="handleRegister(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="reg-firstname">Nama Depan</label>
+                                <input type="text" id="reg-firstname" placeholder="Valen" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg-lastname">Nama Belakang</label>
+                                <input type="text" id="reg-lastname" placeholder="Pratama">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Alamat Email</label>
+                            <input type="email" id="reg-email" placeholder="nama@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-phone">Nomor WhatsApp</label>
+                            <input type="tel" id="reg-phone" placeholder="08974467878">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Kata Sandi</label>
+                            <input type="password" id="reg-password" placeholder="Minimal 8 karakter" oninput="checkPasswordStrength(this.value)" required>
+                            <div class="strength-bar-wrapper">
+                                <div class="strength-bar-segment" id="sb1"></div>
+                                <div class="strength-bar-segment" id="sb2"></div>
+                                <div class="strength-bar-segment" id="sb3"></div>
+                                <div class="strength-bar-segment" id="sb4"></div>
+                            </div>
+                            <span class="strength-label" id="strengthLabel">Masukkan kata sandi</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-confirm">Konfirmasi Kata Sandi</label>
+                            <input type="password" id="reg-confirm" placeholder="Ulangi kata sandi" required>
+                        </div>
+                        <div class="terms-check">
+                            <input type="checkbox" id="terms-agree" required>
+                            <label for="terms-agree">Saya menyetujui <a href="#">Syarat & Ketentuan</a> serta <a href="#">Kebijakan Privasi</a> V-WANGI.</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block" style="margin-top: 20px;">
+                            <i class="fa-solid fa-user-plus"></i> Buat Akun Sekarang
+                        </button>
+                    </form>
+
+                    <div class="divider"><span>atau daftar dengan</span></div>
+
+                    <!-- Social Login — langsung ke OAuth Google/Facebook -->
+                    <div class="social-login-grid">
+                        <a href="https://accounts.google.com/signup" target="_blank" class="social-login-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center; gap:8px;">
+                            <i class="fa-brands fa-google"></i> Google
+                        </a>
+                        <a href="https://www.facebook.com/r.php" target="_blank" class="social-login-btn" style="text-decoration:none; display:flex; justify-content:center; align-items:center; gap:8px;">
+                            <i class="fa-brands fa-facebook-f"></i> Facebook
+                        </a>
+                    </div>
+
+                    <p class="auth-footer-text">Sudah punya akun? <a href="page-login.html">Masuk di sini</a></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer dengan link medsos langsung -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <h3 class="footer-logo">V-WANGI</h3>
+                <p>Meningkatkan rasa percaya diri Anda melalui kemewahan aroma parfum pilihan terbaik.</p>
+                <p class="copyright">&copy; 2026 V-WANGI. Semua hak cipta dilindungi.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigasi</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="footer-link">Home</a></li>
+                    <li><a href="page-about.html" class="footer-link">About</a></li>
+                    <li><a href="page-collections.html" class="footer-link">Collections</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-col">
+                <h4>Hubungi Kami</h4>
+                <p class="contact-desc">Klik ikon untuk langsung terhubung:</p>
+                <div class="social-links-block">
+                    <a href="https://www.tiktok.com/@valennnn023"
+                       target="_blank" rel="noopener noreferrer"
+                       class="social-link-item tiktok-link">
+                        <i class="fa-brands fa-tiktok"></i>
+                        <span class="social-label">TikTok <span class="social-username">@valennnn023</span></span>
+                    </a>
+                    <a href="https://wa.me/628974467878?text=Halo%20V-WANGI%2C%20saya%20ingin%20bertanya%20tentang%20parfum"
+                       target="_blank" rel="noopener noreferrer"
+                       class="social-link-item whatsapp-link">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span class="social-label">WhatsApp <span class="social-username">08974467878</span></span>
+                    </a>
+                    <a href="https://www.instagram.com/saya_gavut"
+                       target="_blank" rel="noopener noreferrer"
+                       class="social-link-item instagram-link">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span class="social-label">Instagram <span class="social-username">@saya_gavut</span></span>
+                    </a>
+                    <a href="https://t.me/valenn_29"
+                       target="_blank" rel="noopener noreferrer"
+                       class="social-link-item telegram-link">
+                        <i class="fa-brands fa-telegram"></i>
+                        <span class="social-label">Telegram <span class="social-username">@valenn_29</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Password Strength Checker
+        function checkPasswordStrength(password) {
+            const segments = [
+                document.getElementById('sb1'),
+                document.getElementById('sb2'),
+                document.getElementById('sb3'),
+                document.getElementById('sb4'),
+            ];
+            const label = document.getElementById('strengthLabel');
+            segments.forEach(s => { s.className = 'strength-bar-segment'; });
+
+            let strength = 0;
+            if (password.length >= 8) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+            const cls = strength <= 1 ? 'active-weak' : strength <= 2 ? 'active-medium' : 'active-strong';
+            const labels = ['', 'Lemah', 'Cukup', 'Kuat', 'Sangat Kuat'];
+            for (let i = 0; i < strength; i++) segments[i].classList.add(cls);
+            label.textContent = password.length === 0 ? 'Masukkan kata sandi' : labels[strength] || 'Lemah';
+            label.style.color = cls === 'active-weak' ? '#ef4444' : cls === 'active-medium' ? '#f59e0b' : '#22c55e';
+        }
+
+        // Register Handler
+        function handleRegister(e) {
+            e.preventDefault();
+            const pwd = document.getElementById('reg-password').value;
+            const confirm = document.getElementById('reg-confirm').value;
+            if (pwd !== confirm) {
+                alert('Kata sandi tidak cocok. Silakan periksa kembali.');
+                return;
+            }
+            if (pwd.length < 8) {
+                alert('Kata sandi minimal 8 karakter.');
+                return;
+            }
+            const email = document.getElementById('reg-email').value;
+            const firstName = document.getElementById('reg-firstname').value;
+            // Simulate saving
+            localStorage.setItem('vwangi_user', JSON.stringify({ email, firstName, registered: true }));
+            alert(`Selamat datang, ${firstName}! Akun berhasil dibuat.`);
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
