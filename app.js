@@ -349,14 +349,14 @@ const PERFUMES_DATA = [
     {
         id: "p17",
         name: "Aphrodite",
-        brand: "Mykonos",
+        brand: "Velixir",
         price: 259000,
         image: "assets/rose_elixir.png",
         imageFilter: "hue-rotate(290deg) saturate(1.8)",
         theme: "pink",
         category: "Floral",
         badge: "Lokal Hits",
-        description: "Parfum buatan lokal dari Mykonos yang sangat populer. Keharuman bunga mawar sensual berpadu dengan rempah manis kayu manis dan kelapa.",
+        description: "Parfum buatan lokal dari Velixir yang sangat populer. Keharuman bunga mawar sensual berpadu dengan rempah manis kayu manis dan kelapa.",
         notes: {
             top: { name: "Jasmine, Saffron, Tagetes", intensity: 80 },
             heart: { name: "Caramel, Amberwood, Coconut", intensity: 85 },
@@ -365,7 +365,7 @@ const PERFUMES_DATA = [
         ingredients: "Alcohol Denat, Purified Water, Fragrance Oil, Saffron Extract, Linalool, Benzyl Salicylate.",
         reviews: [
             { name: "Rina Kartini", rating: 5, comment: "Ini dupe parfum mahal yang beneran mirip dan wanginya nempel banget di kulit!", date: "2026-06-23" },
-            { name: "Bunga", rating: 5, comment: "Mykonos emang ga pernah gagal. Wangi caramelnya manis mewah banget.", date: "2026-06-24" }
+            { name: "Bunga", rating: 5, comment: "Velixir emang ga pernah gagal. Wangi caramelnya manis mewah banget.", date: "2026-06-24" }
         ]
     },
     {
@@ -413,7 +413,7 @@ const PERFUMES_DATA = [
     {
         id: "p20",
         name: "Dark Secret",
-        brand: "Velixir",
+        brand: "Mykonos",
         price: 210000,
         image: "assets/matte_black.png",
         imageFilter: "contrast(1.2) brightness(0.95)",
