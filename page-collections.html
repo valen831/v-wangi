@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-WANGI - Collections</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { overflow-x: hidden; }
+        .static-page { padding-top: calc(var(--navbar-height) + 40px); padding-bottom: 60px; max-width: var(--container-width); margin: 0 auto; padding-left: 40px; padding-right: 40px; }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">V-WANGI</a>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="page-about.html" class="nav-link">About</a>
+                <a href="page-collections.html" class="nav-link active">Collections</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="nav-btn"><i class="fa-regular fa-user"></i><span class="btn-text">Masuk</span></button>
+                <button class="nav-btn cart-toggle-btn"><i class="fa-solid fa-bag-shopping"></i><span class="cart-badge">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="static-page">
+        <div class="section-header">
+            <span class="section-tag">Semua Varian</span>
+            <h2 class="section-title">Collections</h2>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar-wrapper">
+            <div class="filter-group">
+                <span class="filter-label">Brand:</span>
+                <div class="filter-options-list">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">V-Wangi Signature</button>
+                    <button class="filter-btn">Mykonos</button>
+                    <button class="filter-btn">Velixir</button>
+                    <button class="filter-btn">Project 1945</button>
+                    <button class="filter-btn">BSP</button>
+                    <button class="filter-btn">HMNS</button>
+                    <button class="filter-btn">Chanel</button>
+                    <button class="filter-btn">Dior</button>
+                    <button class="filter-btn">Tom Ford</button>
+                    <button class="filter-btn">Creed</button>
+                    <button class="filter-btn">Jo Malone</button>
+                    <button class="filter-btn">YSL</button>
+                    <button class="filter-btn">Gucci</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <span class="filter-label">Kategori Aroma:</span>
+                <div class="filter-options-list">
+                    <button class="filter-btn active">All</button>
+                    <button class="filter-btn">Floral</button>
+                    <button class="filter-btn">Citrus</button>
+                    <button class="filter-btn">Woody</button>
+                    <button class="filter-btn">Oriental</button>
+                    <button class="filter-btn">Fresh</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="collections-grid"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col brand-col">
+                <h3 class="footer-logo">V-WANGI</h3>
+                <p>Meningkatkan rasa percaya diri Anda melalui kemewahan aroma parfum pilihan terbaik.</p>
+                <p class="copyright">&copy; 2026 V-WANGI. Semua hak cipta dilindungi.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Navigasi</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html" class="footer-link">Home</a></li>
+                    <li><a href="page-about.html" class="footer-link">About</a></li>
+                    <li><a href="page-collections.html" class="footer-link">Collections</a></li>
+                </ul>
+            </div>
+            <div class="footer-col contact-col">
+                <h4>Hubungi Kami</h4>
+                <p class="contact-desc">Hubungi profil resmi kami langsung:</p>
+                <div class="social-links-block">
+                    <a href="https://www.tiktok.com/@valennnn023" target="_blank" class="social-link-item tiktok-link">
+                        <i class="fa-brands fa-tiktok"></i>
+                        <span class="social-label">TikTok <span class="social-username">@valennnn023</span></span>
+                    </a>
+                    <a href="https://wa.me/628974467878" target="_blank" class="social-link-item whatsapp-link">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span class="social-label">WhatsApp <span class="social-username">08974467878</span></span>
+                    </a>
+                    <a href="https://www.instagram.com/saya_gavut" target="_blank" class="social-link-item instagram-link">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span class="social-label">Instagram <span class="social-username">@saya_gavut</span></span>
+                    </a>
+                    <a href="https://t.me/valenn_29" target="_blank" class="social-link-item telegram-link">
+                        <i class="fa-brands fa-telegram"></i>
+                        <span class="social-label">Telegram <span class="social-username">@valenn_29</span></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('collections-grid');
+            PERFUMES_DATA.forEach(product => {
+                const avgRating = getProductAverageRating(product);
+                const reviewsCount = product.reviews ? product.reviews.length : 0;
+                const formattedPrice = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(product.price).replace('IDR', 'Rp');
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-theme', product.theme);
+                card.innerHTML = `
+                    <div class="product-card-img-container">
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                        <img src="${product.image}" alt="${product.name}" class="product-card-img" style="filter: ${product.imageFilter || 'none'}">
+                    </div>
+                    <div class="product-card-info">
+                        <span class="product-card-brand">${product.brand}</span>
+                        <h3 class="product-card-title">${product.name}</h3>
+                        <div class="product-card-rating"><i class="fa-solid fa-star"></i><span>${avgRating} (${reviewsCount})</span></div>
+                        <p class="product-card-notes-preview">Top: ${product.notes.top.name}</p>
+                        <div class="product-card-footer">
+                            <span class="product-card-price">${formattedPrice}</span>
+                            <button class="add-cart-circle-btn"><i class="fa-solid fa-cart-plus"></i></button>
+                        </div>
+                    </div>`;
+                grid.appendChild(card);
+            });
+        });
+    </script>
+</body>
+</html>
